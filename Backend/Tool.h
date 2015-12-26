@@ -18,7 +18,7 @@ using namespace std;
 
 typedef string Location;
 
-class Board;
+class Board; // Include "Board.h" in .cpp implementing code.
 
 
 class Tool
