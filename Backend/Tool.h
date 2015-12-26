@@ -1,22 +1,30 @@
 /*
-	This header file is a part from Chess project by:	Yehuda Chikvashvili
-														Meny Menasherov
-														Pe'er Berger
+	This header file is a part from Chess project by:
+		Yehuda Chikvashvili
+		Meny Menasherov
+		Pe'er Berger
 	
 	Tool:
 		An abstract class which represents a chess game instrument.
 		The tool can be found on the board and also can be moved to other location on the board.
 */
 
-#ifndef TOOL_H
-#define TOOL_H
+#ifndef TOOL_H_
+#define TOOL_H_
 
 #include <string>
+
 using namespace std;
+
+typedef string Location;
+
+class Board;
+
 
 class Tool
 {
 	public:
+
 	/**
 	The class constructor.
 	There is a check of location validity.
@@ -27,12 +35,14 @@ class Tool
 																	the secon character represents the row as a number (1-8)
 		On board state, boolean variable (set true to default value)
 	*/
-	Tool ( string location, bool onBoard = true )
+	Tool ( Location location, bool onBoard = true )
 		:_onBoard ( onBoard )
 	{
 		if ( location.length () != 2 || location [ 0 ] > 'h' || location [ 0 ] < 'a' || location [ 1 ]> '8' || location [ 1 ] < '1' )
 		{ //Is the given location invalid?
-			throw exception ( "Invalid location" );
+			string err = "Invalid location: ";
+			err += location;
+			throw exception ( err.c_str () );
 		}
 
 		this->_location = location;
@@ -48,7 +58,7 @@ class Tool
 	Output:
 		The instance's location, represented as a string (Note the constuctor).
 	*/
-	string getLocation ( void )
+	Location getLocation ( void )
 	{
 		return this->_location;
 	}
@@ -101,7 +111,7 @@ class Tool
 		7:	Invalid move, source and destination locations are the same location.
 		8:	Valid move, CHECK-MATE! (Bonus)
 	*/
-	virtual int moveTool ( string ) = 0;
+	virtual int moveTool ( Location ) = 0;
 
 
 	/*
@@ -111,7 +121,7 @@ class Tool
 		r:	rook
 		n:	knight
 		b:	bishop
-		p:	soldier
+		p:	pawn
 		#:	empty tile
 		
 		Lower case charcters represent black tools while the upper case represent white tools.
@@ -119,7 +129,8 @@ class Tool
 	virtual char getSymbol ( void ) = 0;
 	
 	protected:
-	string _location;
+	Board* _board;
+	Location _location;
 	bool _onBoard;
 };
 
