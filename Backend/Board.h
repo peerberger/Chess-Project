@@ -31,7 +31,7 @@ class Board
 	Board ( int );
 	~Board ();
 	string getBoard () const;
-	Tile* getTile() const;
+	Tile* getTile(string) const;
 	int play ( string );
 
 	private:
