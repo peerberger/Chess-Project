@@ -76,8 +76,7 @@ int Board::play ( string move )
 
 	Tile* tile = this->getTile ( src );
 	if ( tile->isOccupied () )
-	{
-		
+	{	
 		Tool* tool = tile->getTool ();
 		return tool->moveTool ( move );
 		// return this->getTile ( src )->getTool ()->moveTool ( dst );
