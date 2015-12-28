@@ -1,6 +1,10 @@
 #include "Rook.h"
+#include <string>
+#include <iostream>
 
-Rook::Rook(Location loc, bool onBoard) : Tool(loc,onBoard)
+using namespace std;
+
+Rook::Rook(Location loc, int player ,bool onBoard) : Tool(loc, player, onBoard)
 {
 	
 }
@@ -25,7 +29,7 @@ int Rook::moveTool(string command)
 	int dstI = command[3] - 48;
 	if (this->_board->getTile()->isOccupied() == false)
 	{
-
+		cout << dstI << " ," << dstJ << endl;
 	}
 	return 0;
 }
