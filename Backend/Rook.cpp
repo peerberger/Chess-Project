@@ -28,9 +28,9 @@ int Rook::moveTool(string command)
 	int dstJ = command[2] - 97;
 	int dstI = command[3] - 48;
 	string dstTile = command[2] + "" + command[3];
-	if (this->_board->getTile(dstTile)->isOccupied() == false)
+	/*if (this->_board->getTile(dstTile)->isOccupied() == false)
 	{
 		cout << dstI << " ," << dstJ << endl;
-	}
+	}*/
 	return 0;
 }
