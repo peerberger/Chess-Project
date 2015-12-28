@@ -29,19 +29,20 @@ char Rook::getSymbol()
 
 int Rook::moveTool(string command)
 {
-	int dstJ = command[2] - 97;
-	int dstI = command[3] - 48;
+	int ans = 0;
+	string srcTile = command[0] + "" + command[1];
 	string dstTile = command[2] + "" + command[3];
-	if (command[0] == command[2] || command[1] == command[3])
+	if (srcTile == dstTile)
 	{
-		if (command[0] == command[2])
-		{
-			while (command[0] - 'a' )
-		}
+		ans = 1;
 	}
-	/*if (this->_board->getTile(dstTile)->isOccupied() == false)
+	else if (command[0] != command[2] && command[1] != command[3])
 	{
-		cout << dstI << " ," << dstJ << endl;
-	}*/
-	return 0;
+		ans = 1;
+	}
+	else if ((command[0] > 'h' || command[0] < 'a') || (command[2] > 'h' || command[2] < 'a') || (command[1] < '1' || command[1] > '8') || (command[3] < '1' || command[3] > '8'))
+	{
+		ans = 1;
+	}
+	return ans;
 }
