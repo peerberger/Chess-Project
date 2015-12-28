@@ -25,7 +25,7 @@ Tile::~Tile ()
 
 bool Tile::isOccupied () const
 {
-	return this->_tool != nullptr;
+	return (this->_tool != nullptr);
 }
 
 

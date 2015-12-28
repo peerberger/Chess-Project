@@ -18,8 +18,8 @@ Board::Board ( int starting_player )
 		for ( int j = 0; j < 8; j++ )
 		{
 			char buffer [ 3 ];
-			buffer [ 1 ] = i + 'a';
-			buffer [ 0 ] = j + '1';
+			buffer [ 0 ] = i + 'a';
+			buffer [ 1 ] = j + '1';
 			buffer [ 2 ] = '\0';
 			this->_tiles [ i ] [ j ] = new Tile ( string (buffer), nullptr );
 		}
@@ -63,7 +63,7 @@ string Board::getBoard () const
 
 Tile* Board::getTile ( string tile ) const
 {
-	return this->_tiles [ tile [ 0 ] - 'a' ] [ tile [ 1 ] - '0' ];
+	return this->_tiles [ tile [ 1 ] - 'a' ] [ tile [ 0 ] - '1' ];
 }
 
 
@@ -72,7 +72,13 @@ int Board::play ( string move )
 	string src = move.substr ( 0, 2 );
 	string dst = move.substr ( 2 );
 
-	if ( this->getTile ( src )->isOccupied () )
-		return this->getTile ( src )->getTool ()->moveTool ( dst );
+	Tile* tile = this->getTile ( src );
+	if ( tile->isOccupied () )
+	{
+		
+		Tool* tool = tile->getTool ();
+		return tool->moveTool ( dst );
+		// return this->getTile ( src )->getTool ()->moveTool ( dst );
+	}
 	return 2;
 }
