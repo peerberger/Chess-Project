@@ -63,7 +63,9 @@ string Board::getBoard () const
 
 Tile* Board::getTile ( string tile ) const
 {
-	return this->_tiles [ tile [ 1 ] - 'a' ] [ tile [ 0 ] - '1' ];
+	int tileJ = tile[0] - 'a';
+	int tileI = tile[1] - '1';
+	return this->_tiles [ tileI ] [ tileJ ];
 }
 
 
@@ -76,7 +78,7 @@ int Board::play ( string move )
 	if ( tile->isOccupied () )
 	{	
 		Tool* tool = tile->getTool ();
-		return tool->moveTool ( dst );
+		return tool->moveTool ( move );
 		// return this->getTile ( src )->getTool ()->moveTool ( dst );
 	}
 	return 2;
