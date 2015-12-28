@@ -54,7 +54,7 @@ void main()
 
 		/******* JUST FOR EREZ DEBUGGING ******/
 		int r = rand() % 10; // just for debugging......
-		msgToGraphics[0] = (char)(1 + '0');
+		msgToGraphics[0] = (char)(main_board.play(msgFromGraphics) + '0');
 		msgToGraphics[1] = 0;
 		/******* JUST FOR EREZ DEBUGGING ******/
 
