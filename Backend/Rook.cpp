@@ -1,6 +1,5 @@
 #include "Rook.h"
 #include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -30,8 +29,8 @@ char Rook::getSymbol()
 int Rook::moveTool(string command)
 {
 	int ans = 0;
-	string srcTile = command[0] + "" + command[1];
-	string dstTile = command[2] + "" + command[3];
+	string srcTile = command.substr(0, 2);
+	string dstTile = command.substr(2);
 	if (srcTile == dstTile)
 	{
 		ans = 7;
