@@ -21,5 +21,11 @@ char Rook::getSymbol()
 
 int Rook::moveTool(string command)
 {
+	int dstJ = command[2] - 97;
+	int dstI = command[3] - 48;
+	if (this->_board->getTile()->isOccupied() == false)
+	{
+
+	}
 	return 0;
 }
