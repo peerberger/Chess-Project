@@ -129,7 +129,7 @@ class Tool
 	virtual char getSymbol ( void ) = 0;
 	
 	protected:
-	Board* _board;
+	static Board* _board;
 	Location _location;
 	bool _onBoard;
 };
