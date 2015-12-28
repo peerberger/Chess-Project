@@ -37,6 +37,10 @@ Location Tile::getLocation () const
 
 Tool* Tile::getTool () const
 {
+	if ( this == nullptr )
+	{
+		return nullptr;
+	}
 	return this->_tool;
 }
 

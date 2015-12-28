@@ -14,7 +14,7 @@ char Rook::getSymbol()
 	char ans;
 	if (this == nullptr)
 	{
-		ans = '#';
+		return '#';
 	}
 	else if (this->_player == 0)
 	{

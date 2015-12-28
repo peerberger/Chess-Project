@@ -1,6 +1,7 @@
 #include "Pipe.h"
 #include <iostream>
 #include <thread>
+#include "Board.h"
 
 using namespace std;
 void main()
@@ -35,9 +36,9 @@ void main()
 	char msgToGraphics[1024];
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
-
-	strcpy_s(msgToGraphics, "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0"); // just example...
-
+	Board main_board ( 0 );
+	//strcpy_s(msgToGraphics, "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0"); // just example...
+	strcpy_s ( msgToGraphics, main_board.getBoard ().c_str () );
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 
 	// get message from graphics

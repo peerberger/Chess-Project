@@ -43,7 +43,13 @@ string Board::getBoard () const
 	string board = "";
 	for ( int i = 0; i < 8; i++ )
 		for ( int j = 0; j < 8; j++ )
-			board += this->_tiles [ i ] [ j ]->getTool ()->getSymbol ();
+		{
+			if ( this->_tiles [ i ] [ j ]->getTool () != nullptr )
+			{
+				board += this->_tiles [ i ] [ j ]->getTool ()->getSymbol ();
+			}
+			else board += '#';
+		}
 	board += "0";
 	return board;
 }
