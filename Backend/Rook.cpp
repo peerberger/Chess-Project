@@ -28,6 +28,10 @@ char Rook::getSymbol()
 
 int Rook::moveTool(string command)
 {
+	/*
+		The only check that must be performed here is the movement availabilty for a rook.
+	*/
+	/*
 	int ans = 0;
 	string srcTile = command.substr(0, 2);
 	string dstTile = command.substr(2);
@@ -44,4 +48,10 @@ int Rook::moveTool(string command)
 		ans = 5;
 	}
 	return ans;
+	*/
+
+	// If The the columns are equal xor the the rows ar equal, this is an available rook move so return 6 * 0 (=0), else, return 1 * 6 (=6)
+	// Quite simple ha?... ( :D )
+	return 6 * !( ( command [ 0 ] != command [ 2 ] ) ^ ( command [ 1 ] != command [ 3 ] ) );
+	
 }

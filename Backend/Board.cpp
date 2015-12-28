@@ -69,17 +69,73 @@ Tile* Board::getTile ( string tile ) const
 }
 
 
+/************************
+* TODO:					*
+*	MAKE IT MODULAR!!!	*
+*************************/
 int Board::play ( string move )
 {
-	string src = move.substr ( 0, 2 );
-	string dst = move.substr ( 2 );
-
-	Tile* tile = this->getTile ( src );
-	if ( tile->isOccupied () )
-	{	
-		Tool* tool = tile->getTool ();
-		return tool->moveTool ( move );
-		// return this->getTile ( src )->getTool ()->moveTool ( dst );
+	int answer = 0;
+	if ( move.length () != 4 )
+	{
+		answer = 5;
 	}
-	return 2;
+	else
+	{
+		string source = move.substr ( 0, 2 );
+		string destination = move.substr ( 2 );
+
+		if ( source == destination )
+		{
+			answer = 7;
+		}
+		else
+		{
+			Tile* srcTile = this->getTile ( source );
+			Tile* dstTile = this->getTile ( destination );
+
+			if	(
+					!( 
+						srcTile->getTool ()->getSymbol () > 'a' - this->_currPlayer*( 'a' - 'A' )
+						&&
+						srcTile->getTool ()->getSymbol () < 'z' - this->_currPlayer * ( 'a' - 'A' )
+					) 
+				)
+			{
+				answer = 2;
+			}
+			else if (
+					dstTile->getTool ()->getSymbol () > 'a' - this->_currPlayer*( 'a' - 'A' )
+					&&
+					dstTile->getTool ()->getSymbol () < 'z' - this->_currPlayer * ( 'a' - 'A' )
+					)
+			{
+				answer = 3;
+			}
+			else if ( 0 /* Check if the owner king is threatened */ )
+			{
+				answer = 4;
+			}
+			else
+			{
+				answer = srcTile->getTool ()->moveTool ( destination );
+
+				if ( answer == 0 )
+				{
+					if ( 0 /* Check if the rival king is threatened */ )
+					{
+						answer = 1;
+
+						if ( 0 /* Check if the rival king can't move*/ )
+						{
+							answer = 8;
+						}
+
+					}
+				}
+			}
+		}
+	}
+
+	return answer;
 }
