@@ -61,7 +61,12 @@ Tile* Board::getTile ( string tile ) const
 }
 
 
-int Board::play ( string )
+int Board::play ( string move )
 {
-	return 0;
+	string src = move.substr ( 0, 2 );
+	string dst = move.substr ( 2 );
+
+	if ( this->getTile ( src )->isOccupied () )
+		return this->getTile ( src )->getTool ()->moveTool ( dst );
+	return 2;
 }
