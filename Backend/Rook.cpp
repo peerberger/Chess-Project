@@ -34,15 +34,15 @@ int Rook::moveTool(string command)
 	string dstTile = command[2] + "" + command[3];
 	if (srcTile == dstTile)
 	{
-		ans = 1;
+		ans = 7;
 	}
 	else if (command[0] != command[2] && command[1] != command[3])
 	{
-		ans = 1;
+		ans = 6;
 	}
 	else if ((command[0] > 'h' || command[0] < 'a') || (command[2] > 'h' || command[2] < 'a') || (command[1] < '1' || command[1] > '8') || (command[3] < '1' || command[3] > '8'))
 	{
-		ans = 1;
+		ans = 5;
 	}
 	return ans;
 }
