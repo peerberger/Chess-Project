@@ -33,7 +33,7 @@ int Rook::moveTool(string command)
 	string dstTile = command.substr(2);
 	if (srcTile == dstTile)
 	{
-		ans = 7; //hello?
+		ans = 7; //hello? For Yehuda
 	}
 	else if (command[0] != command[2] && command[1] != command[3])
 	{
