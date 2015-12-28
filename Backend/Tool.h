@@ -13,6 +13,7 @@
 #define TOOL_H_
 
 #include <string>
+#include "Board.h"
 
 using namespace std;
 
