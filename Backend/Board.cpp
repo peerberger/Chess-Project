@@ -16,7 +16,13 @@ Board::Board ( int starting_player )
 {
 	for ( int i = 0; i < 8; i++ )
 		for ( int j = 0; j < 8; j++ )
-			this->_tiles [ i ] [ j ] = nullptr;
+		{
+			char buffer [ 3 ];
+			buffer [ 1 ] = i + 'a';
+			buffer [ 0 ] = j + '1';
+			buffer [ 2 ] = '\0';
+			this->_tiles [ i ] [ j ] = new Tile ( string (buffer), nullptr );
+		}
 
 	this->_tiles [ 0 ] [ 0 ] = new Tile ( "a1", new Rook ( "a1", 1, true ) );
 	this->_tiles [ 0 ] [ 7 ] = new Tile ( "a8", new Rook ( "a8", 1, true ) );
