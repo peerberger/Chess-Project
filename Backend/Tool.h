@@ -35,9 +35,10 @@ class Tool
 																	the secon character represents the row as a number (1-8)
 		On board state, boolean variable (set true to default value)
 	*/
-	Tool ( Location location, bool onBoard = true )
+	Tool(Location location, int player, bool onBoard = true)
 		:_onBoard ( onBoard )
 	{
+		this->_player = player;
 		if ( location.length () != 2 || location [ 0 ] > 'h' || location [ 0 ] < 'a' || location [ 1 ]> '8' || location [ 1 ] < '1' )
 		{ //Is the given location invalid?
 			string err = "Invalid location: ";
@@ -132,6 +133,7 @@ class Tool
 	static Board* _board;
 	Location _location;
 	bool _onBoard;
+	int _player;
 };
 
 #endif
