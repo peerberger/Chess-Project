@@ -128,9 +128,8 @@ class Tool
 		Lower case charcters represent black tools while the upper case represent white tools.
 	*/
 	virtual char getSymbol ( void ) = 0;
-	
+
 	protected:
-	static Board* _board;
 	Location _location;
 	bool _onBoard;
 	int _player;
