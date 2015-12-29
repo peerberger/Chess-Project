@@ -62,10 +62,10 @@ void Tile::setLocation ( Location location )
 
 void Tile::setTool ( Tool* tool )
 {
-	if ( this->_tool != nullptr )
+	/*if ( this->_tool != nullptr )
 	{
-		delete this->_tool;
-	}
+		delete this->_tool; //deletes also the past rook //UNESSESRY!.
+	}*/
 
-	this->_tool = tool;
+	this->_tool = tool; //Check for memory leaks?
 }

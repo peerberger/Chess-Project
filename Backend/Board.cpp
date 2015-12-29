@@ -175,7 +175,7 @@ bool commandLengthCheck ( string move )
 
 bool tileIndexCheck ( string tile )
 {
-	return ( tile [ 0 ] < 'a' || tile [ 0 ] > 'z' || tile [ 1 ] <'0' || tile [ 1 ] > '9' );
+	return ( tile [ 0 ] < 'a' || tile [ 0 ] > 'h' || tile [ 1 ] <'1' || tile [ 1 ] > '8' );
 }
 
 
