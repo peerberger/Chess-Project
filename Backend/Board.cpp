@@ -136,6 +136,15 @@ int Board::play ( string move )
 	if ( answer == 0 )
 	{
 		cout << "The tool move is valid " << endl;
+		//Updating dst tile + currPlayer
+		if (this->_currPlayer == 0)
+		{
+			this->_currPlayer = 1;
+		}
+		else
+		{
+			this->_currPlayer = 0;
+		}
 		if ( 0 /* Check if the rival king is threatened */ )
 		{
 			answer = 1;
@@ -147,9 +156,9 @@ int Board::play ( string move )
 
 		}
 
-		to->setTool ( from->getTool () );
+		to->setTool ( from->getTool () ); //updating the dst tile.
 		from->setTool ( nullptr );
-		this->_currPlayer = !this->_currPlayer; // Change the current player
+		//this->_currPlayer = !this->_currPlayer; // Change the current player
 	}
 	else
 		cout << "The tool move is not valid" << endl;
@@ -172,6 +181,7 @@ bool tileIndexCheck ( string tile )
 
 bool toolOwnerCheck ( char symbol, int player )
 {
+	//WTF?
 	return
 		(
 		symbol < 'a' - player*( 'a' - 'A' )

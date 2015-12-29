@@ -51,7 +51,7 @@ char Tile::getToolSymbol () const
 		return '#';
 	}
 	
-	return this->_tool->getSymbol ();
+	return this->_tool->getSymbol (); //In The second move the player number is 4870 WHY? + Unrecognized location.
 }
 
 void Tile::setLocation ( Location location )
