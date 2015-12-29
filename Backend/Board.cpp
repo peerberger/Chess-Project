@@ -136,16 +136,8 @@ int Board::play ( string move )
 	if ( answer == 0 )
 	{
 		cout << "The tool move is valid " << endl;
-		//Updating dst tile + currPlayer
-		if (this->_currPlayer == 0)
-		{
-			this->_currPlayer = 1;
-		}
-		else
-		{
-			this->_currPlayer = 0;
-		}
-		if ( 0 /* Check if the rival king is threatened */ )
+
+		if ( 0 /* Check if the rival king is threatened */ ) //ToDo King..
 		{
 			answer = 1;
 
@@ -156,8 +148,24 @@ int Board::play ( string move )
 
 		}
 
+		//Prevent a memory leak
+		if ( to->getTool () != nullptr )
+		{
+			delete to->getTool ();
+		}
+
 		to->setTool ( from->getTool () ); //updating the dst tile.
 		from->setTool ( nullptr );
+
+		//Updating dst tile + currPlayer
+		if (this->_currPlayer == 0)
+		{
+			this->_currPlayer = 1;
+		}
+		else
+		{
+			this->_currPlayer = 0;
+		}
 		//this->_currPlayer = !this->_currPlayer; // Change the current player
 	}
 	else
@@ -182,6 +190,9 @@ bool tileIndexCheck ( string tile )
 bool toolOwnerCheck ( char symbol, int player )
 {
 	//WTF?
+	// I'm glad that you asked:
+	//	Instead of using 'if's, this expression says that 'a' would stay 'a' if player is 0, else, it is considered as 'A'
+	//	Did you understand why?
 	return
 		(
 		symbol < 'a' - player*( 'a' - 'A' )
