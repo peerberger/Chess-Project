@@ -30,6 +30,8 @@ class Tile
 	Location getLocation ( void ) const;
 	Tool* getTool ( void ) const;
 
+	char getToolSymbol ( void ) const;
+
 	//Setters:
 	void setLocation ( Location );
 	void setTool ( Tool* );

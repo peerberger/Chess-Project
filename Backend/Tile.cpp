@@ -44,6 +44,15 @@ Tool* Tile::getTool () const
 	return this->_tool;
 }
 
+char Tile::getToolSymbol () const
+{
+	if ( this->_tool == nullptr )
+	{
+		return '#';
+	}
+	
+	return this->_tool->getSymbol ();
+}
 
 void Tile::setLocation ( Location location )
 {
