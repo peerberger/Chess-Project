@@ -192,7 +192,7 @@ bool toolOwnerCheck ( char symbol, int player )
 	//WTF?
 	// I'm glad that you asked:
 	//	Instead of using 'if's, this expression says that 'a' would stay 'a' if player is 0, else, it is considered as 'A'
-	//	Did you understand why?
+	//	Did you understand why? WOW! I Liked It. BRILLIANT!
 	return
 		(
 		symbol < 'a' - player*( 'a' - 'A' )
