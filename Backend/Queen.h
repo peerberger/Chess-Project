@@ -2,7 +2,6 @@
 #define QUEEN_H_
 
 #include "Tool.h"
-#include "Board.h"
 
 class Queen : public Tool
 {
