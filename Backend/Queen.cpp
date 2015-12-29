@@ -12,7 +12,7 @@ char Queen::getSymbol()
 		return '#';
 	}*/
 	
-	return 'q' - this->_player * ( 'q' - 'Q' ); // Let's use it here as well
+	return 'Q' + this->_player * ( 'q' - 'Q' ); // Let's use it here as well
 }
 
 int Queen::moveTool(string command)

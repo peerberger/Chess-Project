@@ -9,6 +9,7 @@
 
 #include "Board.h"
 #include "Rook.h"
+#include "Queen.h"
 //For Debbuging:
 #include <iostream>
 
@@ -33,8 +34,10 @@ Board::Board ( int starting_player )
 		}
 
 	this->_tiles [ 0 ] [ 0 ] = new Tile ( "a1", new Rook ( "a1", 1, true ) );
+	this->_tiles [ 0 ] [ 4 ] = new Tile ( "a5", new Queen ( "a5", 1, true ) );
 	this->_tiles [ 0 ] [ 7 ] = new Tile ( "a8", new Rook ( "a8", 1, true ) );
 	this->_tiles [ 7 ] [ 0 ] = new Tile ( "h1", new Rook ( "h1", 0, true ) );
+	this->_tiles [ 7 ] [ 3 ] = new Tile ( "h4", new Queen ( "h4", 0, true ) );
 	this->_tiles [ 7 ] [ 7 ] = new Tile ( "h8", new Rook ( "h8", 0, true ) );
 }
 
