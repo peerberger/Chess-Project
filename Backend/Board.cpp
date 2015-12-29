@@ -123,7 +123,7 @@ int Board::play ( string move )
 	cout << "Destination tile does not contain one of the current player's tools" << endl;
 
 
-	if ( 0 /* Check if the owner king is threatened */ )
+	if ( 0 /* Check if the owner king is threatened */ ) //ToDo King..
 	{
 		return 4;
 	}
