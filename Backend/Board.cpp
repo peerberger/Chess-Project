@@ -9,6 +9,8 @@
 
 #include "Board.h"
 #include "Rook.h"
+//For Debbuging:
+#include <iostream>
 
 // Side functions
 bool commandLengthCheck ( string move );
@@ -81,6 +83,8 @@ int Board::play ( string move )
 	{
 		return 5; // Invalid tiles indexes -> the input string length is invalid
 	}
+	
+	cout << "Command length is valid" << endl;
 
 	string src = move.substr ( 0, 2 );
 	string dst = move.substr ( 2 );
@@ -90,10 +94,15 @@ int Board::play ( string move )
 		return 5;
 	}
 
+	cout << "Command indexes are fine" << endl;
+
 	if ( src == dst )
 	{
 		return 7; //source tile and destination tile are equal
 	}
+
+	cout << "Source and destination tiles are different" << endl;
+
 
 	Tile* from = this->getTile ( src );
 	Tile* to = this->getTile ( dst );
@@ -103,20 +112,30 @@ int Board::play ( string move )
 		return 2; // Source tile has no tool which belongs to the current player
 	}
 
+	cout << "Source tile conatains one of the current player's tools" << endl;
+
+	
 	if ( !toolOwnerCheck ( to->getToolSymbol (), this->_currPlayer ) )
 	{
 		return 3;
 	}
+	
+	cout << "Destination tile does not contain one of the current player's tools" << endl;
+
 
 	if ( 0 /* Check if the owner king is threatened */ )
 	{
 		return 4;
 	}
 
-	int answer = from->getTool ()->moveTool ( dst );
+	cout << "The current player's king would not be threatened by this move" << endl;
+
+
+	int answer = from->getTool ()->moveTool ( move );
 
 	if ( answer == 0 )
 	{
+		cout << "The tool move is valid " << endl;
 		if ( 0 /* Check if the rival king is threatened */ )
 		{
 			answer = 1;
@@ -132,7 +151,9 @@ int Board::play ( string move )
 		from->setTool ( nullptr );
 		this->_currPlayer = !this->_currPlayer; // Change the current player
 	}
-	
+	else
+		cout << "The tool move is not valid" << endl;
+
 	return answer;
 }
 
