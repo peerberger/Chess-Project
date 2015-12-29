@@ -56,11 +56,7 @@ string Board::getBoard () const
 	for ( int i = 0; i < 8; i++ )
 		for ( int j = 0; j < 8; j++ )
 		{
-			if ( this->_tiles [ i ] [ j ]->getTool () != nullptr )
-			{
-				board += this->_tiles [ i ] [ j ]->getTool ()->getSymbol ();
-			}
-			else board += '#';
+			board += this->_tiles [ i ] [ j ]->getToolSymbol ();
 		}
 	board += "0";
 	return board;
@@ -102,12 +98,12 @@ int Board::play ( string move )
 	Tile* from = this->getTile ( src );
 	Tile* to = this->getTile ( dst );
 	
-	if ( toolOwnerCheck ( from->getTool ()->getSymbol () , this->_currPlayer ))
+	if ( toolOwnerCheck ( from->getToolSymbol () , this->_currPlayer ))
 	{
 		return 2; // Source tile has no tool which belongs to the current player
 	}
 
-	if ( !toolOwnerCheck ( to->getTool ()->getSymbol (), this->_currPlayer ) )
+	if ( !toolOwnerCheck ( to->getToolSymbol (), this->_currPlayer ) )
 	{
 		return 3;
 	}
