@@ -11,8 +11,14 @@ char Queen::getSymbol()
 	{
 		return '#';
 	}*/
-	
-	return 'Q' + this->_player * ( 'q' - 'Q' ); // Let's use it here as well
+	char symbol = 'q';
+
+	if ( this->_player == 0 )
+	{
+		symbol = 'Q';
+	}
+
+	return symbol;
 }
 
 int Queen::moveTool(string command)
