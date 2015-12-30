@@ -35,7 +35,7 @@ Board::Board ( int starting_player )
 
 	this->_tiles [ 0 ] [ 0 ] = new Tile ( "a1", new Rook ( "a1", 0, true ) ); // White rook at a1
 	this->_tiles [ 0 ] [ 7 ] = new Tile ( "h1", new Rook ( "h1", 0, true ) ); // White rook at h1
-	this->_tiles [ 0 ] [ 4 ] = new Tile ( "e1", new Queen ( "e1", 1, true ) ); // White queen at e1
+	this->_tiles [ 0 ] [ 4 ] = new Tile ( "e1", new Queen ( "e1", 0, true ) ); // White queen at e1
 	this->_tiles [ 7 ] [ 0 ] = new Tile ( "a8", new Rook ( "a8", 1, true ) ); // Black rook at a8
 	this->_tiles [ 7 ] [ 3 ] = new Tile ( "d8", new Queen ( "d8", 1, true ) ); // Black queen at d8
 	this->_tiles [ 7 ] [ 7 ] = new Tile ( "h8", new Rook ( "h8", 1, true ) ); // Black rook at h8

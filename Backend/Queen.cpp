@@ -24,19 +24,21 @@ char Queen::getSymbol()
 int Queen::moveTool(string command)
 {
 	// Let's firstly make it compound with 'if's and then nake it compact
-	int valid = 6;
+	int valid = 0;
 	int srcX = command [ 0 ] - 'a';
 	int srcY = command [ 1 ] - '1';
 	int dstX = command [ 2 ] - 'a';
 	int dstY = command [ 3 ] - '1';
 
-	//src == dst check has been made before calling this method
-	if ( srcX == dstX || srcY == dstY /* A Rook movement check */
-		 ||
-		 abs (srcX - dstX) == abs (srcY - dstY) ) /* A Bishop movement check */
+	if (!( (srcX == dstX) ^ (srcY == dstY) )) // Check a rook movement
 	{
-		valid = 0;
+		valid = 6;
 	}
+	else if ( abs ( srcX - dstX ) != abs ( srcY - dstY ) ) // Check a bishop movement
+	{
+		valid = 6;
+	}
+
 	
-	return 0;
+	return valid;
 }
